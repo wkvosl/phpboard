@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+body{
+/* 	width: 100%; */
+	min-width: 800px;
+}
+
+h1{
+	margin-bottom: 0px;
+}
+
+#all_body_div{
+	width: 93%;
+	margin: auto;
+    text-align: center
+}
+
+hr{
+	margin: 0 0 20px 0;
+}
+
+
+
+#btn_size{
+	width: 100px;
+}

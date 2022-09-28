@@ -1,0 +1,21 @@
+create table test.board(
+bid int auto_increment,
+username varchar(100) not null,
+title varchar(100) not null,
+boardtype varchar(20) not null,
+boardcategory varchar(20) not null,
+usertype varchar(20),
+content text not null,
+writedate date,
+realfilename varchar(100),
+hit int,
+primary key (bid)
+);
+
+insert into test.board (username, title, boardtype, boardcategory, content)
+values ('홍길동','테스트1','유지보수','호스팅','살려주세요');
+
+insert into test.board (username, title, boardtype, boardcategory, content, writedate)
+values ('홍길동','테스트2','유지보수','호스팅','살려주세요', sysdate());
+
+select * from test.board;

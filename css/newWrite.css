@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+#newWriteTable{
+	border: 1px solid;
+	width: 100%;
+	margin: auto;
+	
+	border-collapse: collapse;
+}
+
+#newWriteTable > tr, th, td{
+	border: 1px solid;
+}
+#newWriteTable_td{
+	text-align: left !important;
+}
+
+input, select{
+	margin: 10px 0 10px 10px;
+}
+
+#newWriteTable_input_title{
+	width: 72.6vw;
+}
+
+textarea{
+	margin: 10px 0 10px 10px;
+    width: 73vw;
+    height: 300px;
+    resize: none;
+ }
+ 
+#newWrite_button_div{
+	text-align: end;
+} 
+
+td , th{
+	height: 40px;
+	padding-left: 10px;
+}
+
+.textArea_tag_value{
+	 height: 300px;
+}
