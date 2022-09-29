@@ -18,6 +18,20 @@
 <title>게시판</title>
 <link rel="stylesheet" type="text/css" href="css/all.css">
 <link rel="stylesheet" type="text/css" href="css/newWrite.css">
+
+    <script>
+        function del(){
+        	if (confirm("정말 삭제하시겠습니까??") == true){    
+        		location.replace('actionPHP/delete_Action.php?no=<?=$row['bid']?>');
+        		  return true;
+        	}else{  
+        		alert('취소하였습니다.');
+        	    return false;
+        	}
+        		
+        }
+    </script>
+    
 </head>
 <body>
 
@@ -47,8 +61,28 @@
 			<tr>
 				<th>고객유형</th>
 				<td id="newWriteTable_td">
-					<?=$row['usertype']; ?>
-				</td>
+				<?php 
+				$usertype1 = empty($row['usertype1'])?"":$row['usertype1'];
+				$usertype2 = empty($row['usertype2'])?"":$row['usertype2'];
+				$usertype3 = empty($row['usertype3'])?"":$row['usertype3'];
+				$usertype4 = empty($row['usertype4'])?"":$row['usertype4'];
+				
+				$usertype_arr =  [$usertype1, $usertype2, $usertype3, $usertype4] ;
+				
+				for ($i = 0; $i < sizeof($usertype_arr); $i++) {
+				    
+				    echo $usertype_arr[$i];
+				
+				    for ($j = 0; $j < 1; $j++) {
+				        
+            		if(empty($usertype_arr[$i])==0){
+            				        echo " , ";
+            		}
+				    }
+				}
+				?>
+				
+				</td> 
 			</tr>
 			<tr>
 				<th>제목(필수)</th>
@@ -72,8 +106,8 @@
 		</table>
 		
 			<div id="newWrite_button_div">
-				<input id="btn_size" type="button" value="수정" onclick="location.replace('modify.php?no=<?=$row['bid']?>')">
-				<input id="btn_size" type="button" value="삭제">
+				<input id="btn_size" type="button" value="수정" onclick="location.replace('modify.php?no=<?=$row['bid']?>');">
+				<input id="btn_size" type="button" value="삭제" onclick="return del();">
 				<input id="btn_size" type="button" value="목록" onclick="location.replace('./list.php')">
 			</div>
 	
@@ -81,6 +115,7 @@
 
 </body>
 </html>
+
 
 <?php 
     mysqli_close($conn);

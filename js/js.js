@@ -23,5 +23,12 @@ function check_radio(){
 		newWrite_form.content.focus();
 		return false;
 	}
+	
+	alert('저장 하였습니다.');
 	return true;
 }
+
+
+
+
+

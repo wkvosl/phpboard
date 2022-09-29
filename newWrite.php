@@ -50,16 +50,16 @@
 			<tr>
 				<th>고객유형</th>
 				<td id="newWriteTable_td">
-					<input type="checkbox" name="usertype[]" id="check_1" value="호스팅">
+					<input type="checkbox" name="usertype1" id="check_1" value="호스팅">
 					<label for="check_1" >호스팅</label>
 					
-					<input type="checkbox" name="usertype[]" id="check_2" value="유지보수">
+					<input type="checkbox" name="usertype2" id="check_2" value="유지보수">
 					<label for="check_2" >유지보수</label>
 					
-					<input type="checkbox" name="usertype[]" id="check_3" value="서버임대">
+					<input type="checkbox" name="usertype3" id="check_3" value="서버임대">
 					<label for="check_3" >서버 임대</label>
 					
-					<input type="checkbox" name="usertype[]" id="check_4" value="기타">
+					<input type="checkbox" name="usertype4" id="check_4" value="기타">
 					<label for="check_4" >기타</label>
 				</td>
 			</tr>
