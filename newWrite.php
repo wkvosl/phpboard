@@ -16,7 +16,8 @@
 	
 	<div id="all_body_div">
 		<form action="actionPHP/newWrite_Action.php" method="post"
-			name="newWrite_form">
+			name="newWrite_form" enctype="multipart/form-data">
+<!-- 		<form action="test.php" method="post" -->
 		<table id="newWriteTable">
 			<tr>
 				<th>구분(필수)</th>
@@ -78,8 +79,8 @@
 			<tr>
 				<th>첨부파일</th>
 				<td id="newWriteTable_td">
-					<input name="realfilename">
-					<button>찾아보기</button> //미구현, 나중에 하기
+					<input type="file" name="realfilename" accept="image/*" onchange="setPreview(event);">
+						<div id="imgPreview"></div>
 				</td>
 			</tr>
 		</table>
@@ -89,7 +90,7 @@
 				<input id="btn_size" type="button" value="취소" onclick="location.replace('./list.php')">
 			</div>
 		</form>
-	
+
 	</div>
 
 </body>

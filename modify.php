@@ -93,8 +93,8 @@
 			<tr>
 				<th>첨부파일</th>
 				<td id="newWriteTable_td">
-					<input name="realfilename">
-					<button>찾아보기</button> //미구현, 나중에 하기
+					<input type="file" name="realfilename"> 
+					<?=$row['realfilename']?> <button>삭제</button> 
 				</td>
 			</tr>
 		</table>

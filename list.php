@@ -1,6 +1,5 @@
 <?php
     include 'DB.php';
-   
 ?>
 
 <!DOCTYPE html>
@@ -78,8 +77,6 @@
 		</div>
 		
 	</div>
-	
-	
 	
 </body>
 </html>

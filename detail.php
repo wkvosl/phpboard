@@ -3,11 +3,11 @@
 <?php
 
     include 'DB.php';
-
-    session_start();
+    
     
     $id = $_GET['no'];
     $sql="select * from board where bid=".mysqli_real_escape_string($conn, $id);
+    
     
      $result = mysqli_query($conn, $sql);
         
@@ -97,8 +97,7 @@
 			<tr>
 				<th>첨부파일</th>
 				<td id="newWriteTable_td">
-					<?=$row['realfilename']; ?>
-					<button>다운로드</button> //미구현, 나중에 하기
+					<?=$row['realfilename']; ?> <input type="file" value="다운로드"> 
 				</td>
 			</tr>
 		</table>
@@ -115,17 +114,10 @@
 </html>
 
 <?php 
-
-
     $sql = "update board set hit=".mysqli_real_escape_string($conn, $row['hit'])."+1 where bid=".mysqli_real_escape_string($conn, $row['bid']);
-    if ($_SESSION['name'] != null){
     $result = mysqli_query($conn, $sql);
-   
-    $_SESSION['name']='user';
-}
-
 ?>
 
-<?php 
+<?php
     mysqli_close($conn);
 ?>
