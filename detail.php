@@ -1,13 +1,18 @@
 
+
 <?php
+
     include 'DB.php';
+
+    session_start();
     
     $id = $_GET['no'];
-    $sql="select * from board where bid=".$id;
+    $sql="select * from board where bid=".mysqli_real_escape_string($conn, $id);
     
      $result = mysqli_query($conn, $sql);
         
      $row = mysqli_fetch_array($result);
+     
 ?>
 
 
@@ -35,7 +40,7 @@
 </head>
 <body>
 
-	<h1>등록</h1>
+	<h1>조회</h1>
 	<hr>
 	
 	<div id="all_body_div">
@@ -67,19 +72,12 @@
 				$usertype3 = empty($row['usertype3'])?"":$row['usertype3'];
 				$usertype4 = empty($row['usertype4'])?"":$row['usertype4'];
 				
-				$usertype_arr =  [$usertype1, $usertype2, $usertype3, $usertype4] ;
+				$usertype_arr =  array($usertype1, $usertype2, $usertype3, $usertype4) ;
 				
-				for ($i = 0; $i < sizeof($usertype_arr); $i++) {
-				    
-				    echo $usertype_arr[$i];
-				
-				    for ($j = 0; $j < 1; $j++) {
-				        
-            		if(empty($usertype_arr[$i])==0){
-            				        echo " , ";
-            		}
-				    }
-				}
+				$arr_filter = array_filter($usertype_arr);
+				$comma_arr = implode(", ", $arr_filter);
+				echo $comma_arr;
+
 				?>
 				
 				</td> 
@@ -116,6 +114,17 @@
 </body>
 </html>
 
+<?php 
+
+
+    $sql = "update board set hit=".mysqli_real_escape_string($conn, $row['hit'])."+1 where bid=".mysqli_real_escape_string($conn, $row['bid']);
+    if ($_SESSION['name'] != null){
+    $result = mysqli_query($conn, $sql);
+   
+    $_SESSION['name']='user';
+}
+
+?>
 
 <?php 
     mysqli_close($conn);

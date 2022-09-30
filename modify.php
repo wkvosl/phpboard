@@ -23,7 +23,7 @@
 </head>
 <body>
 
-	<h1>등록</h1>
+	<h1>수정</h1>
 	<hr>
 	
 	<div id="all_body_div">
@@ -101,7 +101,7 @@
 		
 			<div id="newWrite_button_div">
 				<input id="btn_size" type="submit" value="저장" onclick="return check_radio(); ">
-				<input id="btn_size" type="button" value="취소" onclick="location.replace('./list.php')">
+				<input id="btn_size" type="button" value="취소" onclick="location.href='detail.php?no=<?=$row["bid"]?>';">
 			</div>
 		</form>
 	

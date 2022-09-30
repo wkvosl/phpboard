@@ -1,5 +1,6 @@
 <?php
     include 'DB.php';
+   
 ?>
 
 <!DOCTYPE html>
@@ -46,10 +47,12 @@
 			<th>조회수</th>
 		</tr>
 		<?php 
-		$sql = "select * from board";
+		//$sql = "select * from board";
+		$sql ="select @rownum:=@rownum+1 as rownum, board.* from board board, (select @rownum:=0) r order by rownum";
 		$result = mysqli_query($conn, $sql);
 		while($row = mysqli_fetch_array($result)){
        $filter=array(
+        'rownum'=> htmlspecialchars($row['rownum']),
         'bid'=> htmlspecialchars($row['bid']),
         'boardtype'=> htmlspecialchars($row['boardtype']),
         'title'=> htmlspecialchars($row['title']),
@@ -60,7 +63,7 @@
        );
         ?>
 		 <tr>
-			<td><?=$filter['bid']?></td>
+			<td><?=$filter['rownum']?></td>
 			<td><?=$filter['boardtype']?></td>
 			<td id="listTable_title_td"><a href='detail.php?no=<?=$filter['bid']?>'><?=$filter['title']?></a></td>
 			<td><?=$filter['realfilename']?></td>
@@ -80,6 +83,7 @@
 	
 </body>
 </html>
+
 
 <?php 
     mysqli_close($conn);
