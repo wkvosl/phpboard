@@ -97,7 +97,8 @@
 			<tr>
 				<th>첨부파일</th>
 				<td id="newWriteTable_td">
-					<?=$row['realfilename']; ?> <input type="file" value="다운로드"> 
+					<?=$row['realfilename']; ?> 
+<!-- 					다운로드 -->
 				</td>
 			</tr>
 		</table>

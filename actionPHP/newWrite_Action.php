@@ -1,15 +1,14 @@
 <?php
 
 include '../DB.php';
+include '../file.php';
 
 //DB 칼럼을 나눔... 
-// $usertype_arr =  $_POST[ "usertype" ] ;
+// $usertype_arr =  $_POST[ "usertype[]" ] ;
 // $implode_usertype = implode( ", ", $usertype_arr );
-
 // echo $usertype_arr;
 // echo $implode_usertype;
 // file_put_contents('data/'.$_POST['title']);
-
 
  $filter_newWrite = array(
      'username' => mysqli_real_escape_string($conn, $_POST['username']),
@@ -21,7 +20,7 @@ include '../DB.php';
      'usertype3' => mysqli_real_escape_string($conn, $_POST['usertype3']),
      'usertype4' => mysqli_real_escape_string($conn, $_POST['usertype4']),
      'content' => mysqli_real_escape_string($conn, $_POST['content']),
-     'realfilename' => mysqli_real_escape_string($conn, $_POST['realfilename'])
+     'realfilename' => $name
  );
 
  $sql="insert into board (username, title, boardtype, boardcategory, usertype1,usertype2,usertype3,usertype4, content, writedate, realfilename)
@@ -41,7 +40,6 @@ include '../DB.php';
  }
 
 ?>
-
 
 <?php 
     mysqli_close($conn);
