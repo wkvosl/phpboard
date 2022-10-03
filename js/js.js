@@ -43,3 +43,4 @@ function setPreview(event){
 	reader.readAsDataURL(event.target.files[0]);
 }
 
+

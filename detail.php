@@ -98,7 +98,9 @@
 				<th>첨부파일</th>
 				<td id="newWriteTable_td">
 					<?=$row['realfilename']; ?> 
-<!-- 					다운로드 -->
+					<?php if(empty($row['realfilename'])==FALSE){ ?>
+					<button onclick="location.href='actionPHP/file_down.php?no=<?=$row['bid'];?>'">다운로드</button>
+					<?php }?>
 				</td>
 			</tr>
 		</table>

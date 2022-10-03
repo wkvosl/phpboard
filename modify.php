@@ -19,7 +19,18 @@
 <title>게시판</title>
 <link rel="stylesheet" type="text/css" href="css/all.css">
 <link rel="stylesheet" type="text/css" href="css/newWrite.css">
-<script src="js/js.js"></script>
+    <script>
+    function del_file(){
+    	if (confirm("첨부파일을 삭제 하시겠습니까??") == true){    
+    		location.replace('actionPHP/del_button_file.php?no=<?=$row['bid']?>');
+    		  return true;
+    	}else{  
+    		alert('취소하였습니다.');
+    	    return false;
+    	}
+    		
+    }
+    </script>
 </head>
 <body>
 
@@ -94,7 +105,9 @@
 				<th>첨부파일</th>
 				<td id="newWriteTable_td">
 					<input type="file" name="realfilename"> 
-					<?=$row['realfilename']?> <button>삭제</button> 
+					<?=$row['realfilename']?> 
+					<!--<?=empty($row['realfilename'])==FALSE?"<button type='button' onclick='location.href=\"actionPHP/del_button_file.php?no=".$row["bid"]."\"'>삭제</button>":""?>-->
+					<?=empty($row['realfilename'])==FALSE?"<button type='button' onclick='return del_file()'>삭제</button>":""?>
 				</td>
 			</tr>
 		</table>
