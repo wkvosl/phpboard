@@ -36,7 +36,7 @@ include '../file.php';
      echo  '저장 중 에러발생, 저장되지 않았습니다.';
      error_log(mysqli_error($conn));
  }else{
-     //header("Location: ../list.php");
+     header("Location: ../list.php");
  }
 
 ?>

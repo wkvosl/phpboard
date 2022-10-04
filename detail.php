@@ -44,9 +44,10 @@
 	<hr>
 	
 	<div id="all_body_div">
+
 		<table id="newWriteTable">
 			<tr>
-				<th>구분(필수)</th>
+				<th id="detail_th">구분(필수)</th>
 				<td id="newWriteTable_td">
 					<?=$row['boardtype']; ?>
 				</td>
@@ -97,22 +98,20 @@
 			<tr>
 				<th>첨부파일</th>
 				<td id="newWriteTable_td">
-					<?=$row['realfilename']; ?> 
+					<?=empty($row['realfilename'])==TRUE?'첨부파일 없음':$row['realfilename']?> 
 					<?php if(empty($row['realfilename'])==FALSE){ ?>
 					<button onclick="location.href='actionPHP/file_down.php?no=<?=$row['bid'];?>'">다운로드</button>
 					<?php }?>
 				</td>
 			</tr>
 		</table>
-		
+
 			<div id="newWrite_button_div">
 				<input id="btn_size" type="button" value="수정" onclick="location.replace('modify.php?no=<?=$row['bid']?>');">
 				<input id="btn_size" type="button" value="삭제" onclick="return del();">
 				<input id="btn_size" type="button" value="목록" onclick="location.replace('./list.php')">
 			</div>
-	
 	</div>
-
 </body>
 </html>
 

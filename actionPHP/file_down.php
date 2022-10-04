@@ -12,13 +12,13 @@ $filename = basename($row['realfilename']);
 // $filePath = $_SERVER['DOCUMENT_ROOT']."/uploadFile/".$filename;
 $filePath = '../uploadFile/'.$filename;
 
-if( !file_exists($filePath) ) {
+if(!file_exists($filePath) ) {
     echo "파일이 없습니다.";
     exit;
 }
 
-if(is_file($filePath)){
-    $filesize = filesize($filePath);
+if(is_file($filePath)){  //파일명
+    $filesize = filesize($filePath);  
 }
 
     ob_clean();

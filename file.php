@@ -2,6 +2,7 @@
 <!-- echo sys_get_temp_dir(); -->
 <?php
 // $_FILES의 배열 정리
+
 if(isset($_FILES)){
      $error = $_FILES['realfilename']['error'];
      $name = $_FILES['realfilename']['name'];
@@ -11,7 +12,7 @@ if(isset($_FILES)){
 }
 //$_SERVER['DOCUMENT_ROOT'];
 //저장경로
-$upload_dir = '$_SERVER[DOCUMENT_ROOT]\s\uploadFile\\';
+$upload_dir = $_SERVER['DOCUMENT_ROOT'].'\s\uploadFile\\';
 $upload_file = $upload_dir.basename($name);
 
 //확장자
