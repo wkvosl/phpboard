@@ -15,12 +15,11 @@
 	<hr>
 	
 	<div id="all_body_div">
-		<form action="actionPHP/newWrite_Action.php" method="post"
-			name="newWrite_form" enctype="multipart/form-data">
-<!-- 		<form action="test.php" method="post" -->
+		<form action="actionPHP/newWrite_Action.php" method="post" name="newWrite_form" enctype="multipart/form-data">
+<!-- 		<form action="test.php" method="post" enctype="multipart/form-data" name="newWrite_form"> -->
 		<table id="newWriteTable">
 			<tr>
-				<th>구분(필수)</th>
+				<th id="newWrite_th">구분(필수)</th>
 				<td id="newWriteTable_td">
 					<select name="boardtype" required>
 						<option value="" >선택해주세요</option>
@@ -79,6 +78,7 @@
 			<tr>
 				<th>첨부파일</th>
 				<td id="newWriteTable_td">
+<!-- 					<input type="hidden" name="MAX_FILE_SIZE" value="300000"> 기본 20MB-->
 					<input type="file" name="realfilename" accept="image/*" onchange="setPreview(event);">
 						<div id="imgPreview"></div>
 				</td>

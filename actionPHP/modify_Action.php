@@ -2,6 +2,7 @@
 <?php
 
 include '../DB.php';
+include '../file.php';
 
 
 //DB 칼럼을 나눔... 
@@ -24,7 +25,7 @@ include '../DB.php';
      'usertype3' => mysqli_real_escape_string($conn, $_POST['usertype3']),
      'usertype4' => mysqli_real_escape_string($conn, $_POST['usertype4']),
      'content' => mysqli_real_escape_string($conn, $_POST['content']),
-     'realfilename' => mysqli_real_escape_string($conn, $_POST['realfilename'])
+     'realfilename' => $name
  );
  
  $sql="update board set username ='".$filter_modify['username']."', title ='".$filter_modify['title'].
@@ -34,16 +35,7 @@ include '../DB.php';
  "'  where bid=".$filter_modify['bid'];
 
  
-//  $usertype1 = isset($filter_modify[ "usertype1" ]) ? $filter_modify[ "usertype1" ] : '';
-//  $usertype2 = isset($filter_modify[ "usertype2" ]) ? $filter_modify[ "usertype2" ] : '';
-//  $usertype3 = isset($filter_modify[ "usertype3" ]) ? $filter_modify[ "usertype3" ] : '';
-//  $usertype4 = isset($filter_modify[ "usertype4" ]) ? $filter_modify[ "usertype4" ] : '';
 
-//  $sql="update board set username ='".$filter_modify['username']."', title ='".$filter_modify['title'].
-//  "', boardtype='".$filter_modify['boardtype']."', boardcategory='".$filter_modify['boardcategory'].
-//  "', usertype1='".$usertype1."', usertype2='".$usertype2."', usertype3='".$usertype3.
-//  "', usertype4='".$usertype4."', content='".$filter_modify['content']."', realfilename='".$filter_modify['realfilename'].
-//  "'  where bid=".$filter_modify['bid'];
  $result = mysqli_query($conn, $sql);
 
  if($result==false){
