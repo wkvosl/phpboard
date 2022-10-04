@@ -24,6 +24,11 @@
 	margin: 30px 0 10px 0;
 }
 
+#table_div{
+	height: 270px;
+    width: inherit;
+}
+
 #listTable{
 	border: 1px solid;
 	width: 100%;
@@ -50,4 +55,15 @@
 
 button{
 	margin: 10px 0 10px 10px;
+}
+
+
+
+#paging{
+	height: 50px;
+    line-height: 50px;
+}
+
+#paging_a{
+	text-decoration: none;
 }

@@ -38,12 +38,11 @@
 	<hr>
 	
 	<div id="all_body_div">
-		<form action="actionPHP/modify_Action.php" method="post"
-			name="newWrite_form">
+		<form action="actionPHP/modify_Action.php" method="post" name="newWrite_form" enctype="multipart/form-data">
 			<input type="hidden" name="bid" value="<?=$_GET['no']?>">
 		<table id="newWriteTable">
 			<tr>
-				<th>구분(필수)</th>
+				<th id="modify_th">구분(필수)</th>
 				<td id="newWriteTable_td">
 					<select name="boardtype" required>
 						<option value="유지보수" <?=$row['boardtype']=="유지보수"?"checked":""?>>유지보수</option>
