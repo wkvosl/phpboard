@@ -25,7 +25,7 @@ include '../file.php';
      'usertype3' => mysqli_real_escape_string($conn, $_POST['usertype3']),
      'usertype4' => mysqli_real_escape_string($conn, $_POST['usertype4']),
      'content' => mysqli_real_escape_string($conn, $_POST['content']),
-     'realfilename' => $name
+     'realfilename' => $nameplus
  );
  
  $sql="update board set username ='".$filter_modify['username']."', title ='".$filter_modify['title'].

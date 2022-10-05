@@ -7,6 +7,11 @@
     line-height: 50px;
 }
 
+#SearchDiv_search{
+	height: 50px;
+    line-height: 50px;
+}
+
 #SearchDiv_inForm{
 	height: inherit;
 	width: inherit;
@@ -17,6 +22,7 @@
 
 #SearchDiv_inForm > input{
 	width:12vw;
+	text-align: center;
 }
 
 #listCount_Ptag{
@@ -27,6 +33,7 @@
 #table_div{
 	height: 270px;
     width: inherit;
+    margin: auto;
 }
 
 #listTable{
@@ -35,14 +42,26 @@
 	margin: auto;
 	text-align: center;
 	border-collapse: collapse;
+	table-layout: fixed;
 }
 
 #listTable > tr, th, td{
 	border: 1px solid;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 #listTable_Title_tr{
 	background-color: lightgray;
 }
+
+#listTable_Title_tr > #th_1{width: 73px;}
+#listTable_Title_tr > #th_2{width: 140px;}
+#listTable_Title_tr > #th_3{width: 360px;}
+#listTable_Title_tr > #th_4{width: 73px;}
+#listTable_Title_tr > #th_5{width: 181px;}
+#listTable_Title_tr > #th_6{width: 106px;}
+#listTable_Title_tr > #th_7{width: 73px;}
 
 #listTable_title_td{
 	text-align: left;

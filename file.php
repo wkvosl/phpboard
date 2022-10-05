@@ -12,7 +12,7 @@ if(isset($_FILES)){
 }
 //$_SERVER['DOCUMENT_ROOT'];
 //저장경로
-$upload_dir = $_SERVER['DOCUMENT_ROOT'].'\s\uploadFile\\';
+$upload_dir = $_SERVER['DOCUMENT_ROOT'].'/s/uploadFile/';
 $upload_file = $upload_dir.basename($name);
 
 //확장자
@@ -32,7 +32,17 @@ $allowed_ext=array('jpg','jpeg','jpe','png','bmp','gif');
         }
     }
 
-    move_uploaded_file($temp_name, $upload_file);
+    
+
+    if (file_exists($upload_file)){
+        $randnum = rand(00000,99999);
+        $nameplus = $randnum.''.date('YmdH')."_".$name;
+        if($name==''){
+            $nameplus = null;
+        }
+        $upload_file = $upload_dir.basename($nameplus);
+    }
+        move_uploaded_file($temp_name, $upload_file);
     
 //     echo "<h2> 파일명정보 </h2>
 //            <ul>

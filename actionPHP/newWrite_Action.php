@@ -20,7 +20,7 @@ include '../file.php';
      'usertype3' => mysqli_real_escape_string($conn, $_POST['usertype3']),
      'usertype4' => mysqli_real_escape_string($conn, $_POST['usertype4']),
      'content' => mysqli_real_escape_string($conn, $_POST['content']),
-     'realfilename' => $name
+     'realfilename' => $nameplus
  );
 
  $sql="insert into board (username, title, boardtype, boardcategory, usertype1,usertype2,usertype3,usertype4, content, writedate, realfilename)

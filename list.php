@@ -54,24 +54,26 @@
 <div id="table_div">
 	<table id="listTable">
 		<tr id="listTable_Title_tr">
-			<th>제목</th>
-			<th>구분</th>
-			<th>제목</th>
-			<th>첨부</th>
-			<th>작성일</th>
-			<th>작성자</th>
-			<th>조회수</th>
+			<th id="th_1">번호</th>
+			<th id="th_2">구분</th>
+			<th id="th_3">제목</th>
+			<th id="th_4">첨부</th>
+			<th id="th_5">작성일</th>
+			<th id="th_6">작성자</th>
+			<th id="th_7">조회수</th>
 		</tr>
 		<?php 
 		
 		if(isset($_GET['page'])==false){
-		    $sql="select @rownum:=@rownum+1 rownum, board.*
-                from board board, (select @rownum:=0) r order by rownum
+		    $sql="select @rownum:=@rownum+1 as rownum, b.* from
+	           ( select board.* from test.board board, (select @rownum:=0) r order by writedate desc) b 
+                order by rownum
                 limit ".$firstRownum.",".$paging;
 		}
 		
-		$sql ="select @rownum:=@rownum+1 as rownum, board.*
-                from board board, (select @rownum:=0) r order by rownum
+		$sql ="select @rownum:=@rownum+1 as rownum, b.* from
+	           ( select board.* from test.board board, (select @rownum:=0) r order by writedate desc) b 
+                order by rownum
                 limit ".$firstRownum.",".$paging;
 		
 		$result = mysqli_query($conn, $sql);
@@ -90,10 +92,10 @@
 		 <tr>
 			<td><?=$filter['rownum']?></td>
 			<td><?=$filter['boardtype']?></td>
-			<td id="listTable_title_td"><a href='detail.php?no=<?=$filter['bid']?>'><?=$filter['title']?></a></td>
+			<td id="listTable_title_td" title="<?=$filter['title']?>"><a href='detail.php?no=<?=$filter['bid']?>'><?=$filter['title']?></a></td>
 			<td><?=$filter['realfilename']!=NULL?'💾':''?></td>
 			<td><?=$filter['writedate']?></td>
-			<td><?=$filter['username']?></td>
+			<td title="<?=$filter['username']?>"><?=$filter['username']?></td>
 			<td><?=$filter['hit']?></td>
 		</tr>
 		<?php } ?>
