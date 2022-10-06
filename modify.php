@@ -56,6 +56,7 @@
 	
 	<div id="all_body_div">
 		<form action="actionPHP/modify_Action.php" method="post" name="newWrite_form" enctype="multipart/form-data">
+<!-- 		<form action="filecheck.php" method="post" name="newWrite_form" enctype="multipart/form-data"> -->
 			<input type="hidden" name="bid" value="<?=$id?>">
 		<table id="newWriteTable">
 			<tr>
@@ -120,10 +121,10 @@
 			<tr>
 				<th>첨부파일</th>
 				<td id="newWriteTable_td">
-					<input type="file" name="realfilename"> 
+					<input type="file" name="realfilename" onclick="locaion.href='rweenfile.php?no='<?=$filter["bid"]?>"> 
 					<?=$filter['realfilename']?> 
 					<!--<?=empty($filter['realfilename'])==FALSE?"<button type='button' onclick='location.href=\"actionPHP/del_button_file.php?no=".$filter["bid"]."\"'>삭제</button>":""?>-->
-					<?=empty($filter['realfilename'])==FALSE?"<button type='button' onclick='return del_file()'>삭제</button>":""?>
+					<?=empty($filter['realfilename'])==FALSE?"<button type='button' onclick='return del_file();'>삭제</button>":""?>
 				</td>
 			</tr>
 		</table>

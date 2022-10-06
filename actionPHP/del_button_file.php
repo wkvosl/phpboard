@@ -1,9 +1,9 @@
 <?php
 include '../DB.php';
 
-$id = $_GET['no'];
+$id = mysqli_real_escape_string($conn, $_GET['no']);
 
-$sql="select * from board where bid = ".mysqli_real_escape_string($conn, $id);
+$sql="select * from board where bid = ".$id;
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_array($result);
 $name = $row['realfilename'];

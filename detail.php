@@ -3,6 +3,7 @@
 <?php
 
     include 'DB.php';
+    $page = empty($_GET['page'])? $page = 1:$_GET['page'];
     
     
     $id = mysqli_real_escape_string($conn,$_GET['no']);
@@ -38,7 +39,7 @@
     <script>
         function del(){
         	if (confirm("정말 삭제하시겠습니까??") == true){    
-        		location.replace('actionPHP/delete_Action.php?no=<?=$row['bid']?>');
+		       	location.replace('actionPHP/delete_Action.php?no=<?=$filter['bid']?>');
         		  return true;
         	}else{  
         		alert('취소하였습니다.');
@@ -121,7 +122,7 @@
 			<div id="newWrite_button_div">
 				<input id="btn_size" type="button" value="수정" onclick="location.replace('modify.php?no=<?=$filter['bid']?>');">
 				<input id="btn_size" type="button" value="삭제" onclick="return del();">
-				<input id="btn_size" type="button" value="목록" onclick="location.replace('./list.php')">
+				<input id="btn_size" type="button" value="목록" onclick="location.replace('list.php?page=<?=$page?>')">
 			</div>
 	</div>
 </body>
