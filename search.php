@@ -6,9 +6,9 @@
     $s_firstdate = empty($_GET['fd'])==TRUE?'':$_GET['fd'];   //SearchForFirstDate
     $s_lastdate = empty($_GET['ld'])==TRUE?'':$_GET['ld'];    //SearchForLastDate
 
-    $per_username = '+'.$s_username.'*';
-    $per_title = '+'.$s_title.'*';
-    
+    $per_username = '%'.$s_username.'%';
+    $per_title = '%'.$s_title.'%';
+   
     $per_username = empty($s_username)?'':$per_username;
     $per_title= empty($s_title)?'':$per_title;
  ?>
@@ -37,10 +37,10 @@
 		$getpage =isset($_GET['page'])==false?"1":$_GET['page'];
 		
 		if (empty($s_firstdate)==true) {
-		    $s_firstdate = '20000101' ;
+		    $s_firstdate = '2000-01-01 00:00:00' ;
 		}
 		if (empty($s_lastdate)==true) {
-		    $s_lastdate = date("Ymd");
+		    $s_lastdate = date("Y-m-d")." 23:59:59";
 		}
 		
 		$per_title = mysqli_real_escape_string($conn, $per_title);
@@ -49,14 +49,33 @@
 		$s_lastdate = mysqli_real_escape_string($conn, $s_lastdate);
 		
 		//전체 검색 결과
-		if(!empty($per_title) || !empty($per_username)){
+		if(!empty($per_title) && empty($per_username)){
 		$sql = " select @rownum:=@rownum+1 rownum, board.*, count(@rownum) count 
         from test.board board, (select @rownum:=0)r
         where 
-			match(title,username)against('$per_title $per_username' in boolean mode) and
+            title like '$per_title' and
             board.writedate between '$s_firstdate' and '$s_lastdate'
 		order by rownum";
+		    
 		}
+		if(!empty($per_username) && empty($per_title)){
+		    $sql = "select @rownum:=@rownum+1 rownum, board.*, count(@rownum) count 
+        from test.board board, (select @rownum:=0)r
+        where 
+			username like '$per_username' and
+            board.writedate between '$s_firstdate' and '$s_lastdate'
+		order by rownum ";
+		}
+		if(!empty($per_username) && empty(!$per_title)){
+		    $sql = "select @rownum:=@rownum+1 rownum, board.*, count(@rownum) count 
+        from test.board board, (select @rownum:=0)r
+        where 
+			title like '$per_title' or
+			username like '&$per_username' and
+            board.writedate between '$s_firstdate' and '$s_lastdate'
+		order by rownum ";
+		}
+		
 		if(empty($per_title) && empty($per_username)){
 		    $sql = " select @rownum:=@rownum+1 rownum, board.*, count(@rownum) count
         from test.board board, (select @rownum:=0)r
@@ -95,25 +114,40 @@
 		<?php 
 		
 		//전체 검색 결과 페이징
-		if(!empty($per_title) || !empty($per_username)){
-		    $sql = " select @rownum:=@rownum+1 rownum,  b.* from (select board.* 
-        from test.board board, (select @rownum:=0) r
+		if(!empty($per_title) && empty($per_username)){
+		    $sql = " select @rownum:=@rownum+1 rownum, board.*
+        from test.board board, (select @rownum:=0)r
         where
-			match(title,username)against('$per_title $per_username' in boolean mode) and
+            title like '$per_title' and
             board.writedate between '$s_firstdate' and '$s_lastdate'
-        order by writedate desc) b 
+		order by rownum limit $firstRownum,$paging";
+		    
+		}
+		if(!empty($per_username) && empty($per_title)){
+		    $sql = "select @rownum:=@rownum+1 rownum, board.*
+        from test.board board, (select @rownum:=0)r
+        where
+			username like '$per_username' and
+            board.writedate between '$s_firstdate' and '$s_lastdate'
 		order by rownum limit $firstRownum,$paging";
 		}
+		if(!empty($per_username) && empty(!$per_title)){
+		    $sql = "select @rownum:=@rownum+1 rownum, board.*
+        from test.board board, (select @rownum:=0)r
+        where
+			title like '$per_title' or
+			username like '$per_username' and
+            board.writedate between '$s_firstdate' and '$s_lastdate'
+		order by rownum limit $firstRownum,$paging";
+		}
+		
 		if(empty($per_title) && empty($per_username)){
-		    $sql = " select @rownum:=@rownum+1 rownum,  b.* from (select board.* 
-        from test.board board, (select @rownum:=0) r
+		    $sql = " select @rownum:=@rownum+1 rownum, board.*
+        from test.board board, (select @rownum:=0)r
         where
             board.writedate between '$s_firstdate' and '$s_lastdate'
-        order by writedate desc) b 
 		order by rownum limit $firstRownum,$paging";
 		}
-
-        
 		
 		$result = mysqli_query($conn, $sql);
 		
