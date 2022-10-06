@@ -135,10 +135,10 @@
 		 <tr>
 			<td><?=$filter['rownum']?></td>
 			<td><?=$filter['boardtype']?></td>
-			<td id="listTable_title_td"><a href='detail.php?no=<?=$filter['bid']?>'><?=$filter['title']?></a></td>
+			<td id="listTable_title_td" title="<?=$filter['title']?>"><a href='detail.php?no=<?=$filter['bid']?>'><?=$filter['title']?></a></td>
 			<td><?=$filter['realfilename']!=NULL?'💾':''?></td>
 			<td><?=$dateformat?></td>
-			<td><?=$filter['username']?></td>
+			<td title="<?=$filter['username']?>"><?=$filter['username']?></td>
 			<td><?=$filter['hit']?></td>
 		</tr>
 		<?php } ?>

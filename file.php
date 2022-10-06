@@ -17,7 +17,8 @@
         
         if(!in_array($ext, $allowed_ext)){
             echo "<script> alert('허용되지 않은 확장자');</script>";
-            echo "<script> history.back(-1);</script>";
+            echo "<script> history.go(-1);</script>";
+//             header('location:'.$_SERVER['HTTP_REFERER']);
             exit;
         }
     }
