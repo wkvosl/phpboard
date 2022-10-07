@@ -7,7 +7,7 @@
 <title>게시판</title>
 <link rel="stylesheet" type="text/css" href="css/all.css">
 <link rel="stylesheet" type="text/css" href="css/newWrite.css">
-<script src="js/js.js"></script>
+<script src="js/newWrite.js"></script>
 </head>
 <body>
 
@@ -86,7 +86,7 @@
 		</table>
 		
 			<div id="newWrite_button_div">
-				<input id="btn_size" type="submit" value="저장" onclick="return check_radio()">
+				<input id="btn_size" type="submit" value="저장" onclick="return checkinput()">
 				<input id="btn_size" type="button" value="취소" onclick="location.replace('./list.php')">
 			</div>
 		</form>

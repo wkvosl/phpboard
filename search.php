@@ -1,8 +1,8 @@
 <?php
     include 'DB.php';
     
-    $s_title = empty($_GET['t'])==TRUE?'':$_GET['t'];        //SearchForTitle
-    $s_username = empty($_GET['u'])==TRUE?'':$_GET['u'];  //SearchForUsername
+    $s_title = empty($_GET['t'])==TRUE?'':trim($_GET['t']);        //SearchForTitle
+    $s_username = empty($_GET['u'])==TRUE?'':trim($_GET['u']);  //SearchForUsername
     $s_firstdate = empty($_GET['fd'])==TRUE?'':$_GET['fd'];   //SearchForFirstDate
     $s_lastdate = empty($_GET['ld'])==TRUE?'':$_GET['ld'];    //SearchForLastDate
 
@@ -37,7 +37,7 @@
 		$getpage =isset($_GET['page'])==false?"1":$_GET['page'];
 		
 		if (empty($s_firstdate)==true) {
-		    $s_firstdate = '2000-01-01 00:00:00' ;
+		    $s_firstdate = '2000-01-01' ;
 		}
 		if (empty($s_lastdate)==true) {
 		    $s_lastdate = date("Y-m-d")." 23:59:59";
@@ -50,13 +50,12 @@
 		
 		//전체 검색 결과
 		if(!empty($per_title) && empty($per_username)){
-		$sql = " select @rownum:=@rownum+1 rownum, board.*, count(@rownum) count 
+		    $sql = "select @rownum:=@rownum+1 rownum, board.*, count(@rownum) count 
         from test.board board, (select @rownum:=0)r
         where 
             title like '$per_title' and
             board.writedate between '$s_firstdate' and '$s_lastdate'
 		order by rownum";
-		    
 		}
 		if(!empty($per_username) && empty($per_title)){
 		    $sql = "select @rownum:=@rownum+1 rownum, board.*, count(@rownum) count 
@@ -66,16 +65,15 @@
             board.writedate between '$s_firstdate' and '$s_lastdate'
 		order by rownum ";
 		}
-		if(!empty($per_username) && empty(!$per_title)){
+		if(!empty($per_username) && !empty($per_title)){
 		    $sql = "select @rownum:=@rownum+1 rownum, board.*, count(@rownum) count 
         from test.board board, (select @rownum:=0)r
         where 
-			title like '$per_title' or
-			username like '&$per_username' and
+			title like '$per_title' and
+			username like '$per_username' and
             board.writedate between '$s_firstdate' and '$s_lastdate'
 		order by rownum ";
 		}
-		
 		if(empty($per_title) && empty($per_username)){
 		    $sql = " select @rownum:=@rownum+1 rownum, board.*, count(@rownum) count
         from test.board board, (select @rownum:=0)r
@@ -135,7 +133,7 @@
 		    $sql = "select @rownum:=@rownum+1 rownum, board.*
         from test.board board, (select @rownum:=0)r
         where
-			title like '$per_title' or
+			title like '$per_title' and
 			username like '$per_username' and
             board.writedate between '$s_firstdate' and '$s_lastdate'
 		order by rownum limit $firstRownum,$paging";
