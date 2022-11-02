@@ -7,7 +7,7 @@
 <title>게시판</title>
 <link rel="stylesheet" type="text/css" href="css/all.css">
 <link rel="stylesheet" type="text/css" href="css/newWrite.css">
-<script src="js/newWrite.js"></script>
+<script src="js/js.js"></script>
 </head>
 <body>
 
@@ -15,11 +15,12 @@
 	<hr>
 	
 	<div id="all_body_div">
-		<form action="actionPHP/newWrite_Action.php" method="post" name="newWrite_form" enctype="multipart/form-data">
-<!-- 		<form action="test.php" method="post" enctype="multipart/form-data" name="newWrite_form"> -->
+		<form action="actionPHP/newWrite_Action.php" method="post"
+			name="newWrite_form" enctype="multipart/form-data">
+<!-- 		<form action="test.php" method="post" -->
 		<table id="newWriteTable">
 			<tr>
-				<th id="newWrite_th">구분(필수)</th>
+				<th>구분(필수)</th>
 				<td id="newWriteTable_td">
 					<select name="boardtype" required>
 						<option value="" >선택해주세요</option>
@@ -78,7 +79,6 @@
 			<tr>
 				<th>첨부파일</th>
 				<td id="newWriteTable_td">
-<!-- 					<input type="hidden" name="MAX_FILE_SIZE" value="300000"> 기본 20MB-->
 					<input type="file" name="realfilename" accept="image/*" onchange="setPreview(event);">
 						<div id="imgPreview"></div>
 				</td>
@@ -86,7 +86,7 @@
 		</table>
 		
 			<div id="newWrite_button_div">
-				<input id="btn_size" type="submit" value="저장" onclick="return checkinput()">
+				<input id="btn_size" type="submit" value="저장" onclick="return check_radio()">
 				<input id="btn_size" type="button" value="취소" onclick="location.replace('./list.php')">
 			</div>
 		</form>
