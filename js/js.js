@@ -1,6 +1,6 @@
 
 
-function checkinput(){
+function check_radio(){
 	
 	if(document.newWrite_form.boardtype.value.length==0){
 		newWrite_form.boardtype.focus();
@@ -29,6 +29,7 @@ function checkinput(){
 }
 
 
+
 function setPreview(event){
 	var reader = new FileReader();
 	var imgpreview = document.querySelector("div#imgPreview");
@@ -41,6 +42,4 @@ function setPreview(event){
 	};
 	reader.readAsDataURL(event.target.files[0]);
 }
-
-
 

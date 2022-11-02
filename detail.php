@@ -1,33 +1,18 @@
 
 
 <?php
-    require_once 'DB.php';
-    $page = empty($_GET['page'])? $page = 1:$_GET['page'];
+
+    include 'DB.php';
     
     
-    $id = mysqli_real_escape_string($conn,$_GET['no']);
-    $sql="select * from board where bid=". $id;
+    $id = $_GET['no'];
+    $sql="select * from board where bid=".mysqli_real_escape_string($conn, $id);
     
     
      $result = mysqli_query($conn, $sql);
         
-     while($row = mysqli_fetch_array($result)){
-         $filter=array(
-             'bid'=> htmlspecialchars($row['bid']),
-             'boardtype'=> htmlspecialchars($row['boardtype']),
-             'title'=> htmlspecialchars($row['title']),
-             'boardcategory'=> htmlspecialchars($row['boardcategory']),
-             'content'=> htmlspecialchars($row['content']),
-             'realfilename'=> htmlspecialchars($row['realfilename']),
-             'writedate'=> htmlspecialchars($row['writedate']),
-             'username'=> htmlspecialchars($row['username']),
-             'usertype1'=> htmlspecialchars($row['usertype1']),
-             'usertype2'=> htmlspecialchars($row['usertype2']),
-             'usertype3'=> htmlspecialchars($row['usertype3']),
-             'usertype4'=> htmlspecialchars($row['usertype4']),
-             'hit'=> htmlspecialchars($row['hit'])
-         );
-     }
+     $row = mysqli_fetch_array($result);
+     
 ?>
 
 
@@ -42,7 +27,7 @@
     <script>
         function del(){
         	if (confirm("정말 삭제하시겠습니까??") == true){    
-		       	location.replace('actionPHP/delete_Action.php?no=<?=$filter['bid']?>');
+        		location.replace('actionPHP/delete_Action.php?no=<?=$row['bid']?>');
         		  return true;
         	}else{  
         		alert('취소하였습니다.');
@@ -59,40 +44,40 @@
 	<hr>
 	
 	<div id="all_body_div">
-
 		<table id="newWriteTable">
 			<tr>
-				<th id="detail_th">구분(필수)</th>
+				<th>구분(필수)</th>
 				<td id="newWriteTable_td">
-					<?=$filter['boardtype'] ?>
+					<?=$row['boardtype']; ?>
 				</td>
 			</tr>
 			<tr>
 				<th>작성자(필수)</th>
 				<td id="newWriteTable_td">
-					<?=$filter['username']; ?>
+					<?=$row['username']; ?>
 				</td>
 			</tr>
 			<tr>
 				<th>분류(필수)</th>
 				<td id="newWriteTable_td">
-					<?=$filter['boardcategory']; ?>
+					<?=$row['boardcategory']; ?>
 				</td>
 			</tr>
 			<tr>
 				<th>고객유형</th>
 				<td id="newWriteTable_td">
 				<?php 
-				$usertype1 = empty($filter['usertype1'])?"":$filter['usertype1'];
-				$usertype2 = empty($filter['usertype2'])?"":$filter['usertype2'];
-				$usertype3 = empty($filter['usertype3'])?"":$filter['usertype3'];
-				$usertype4 = empty($filter['usertype4'])?"":$filter['usertype4'];
+				$usertype1 = empty($row['usertype1'])?"":$row['usertype1'];
+				$usertype2 = empty($row['usertype2'])?"":$row['usertype2'];
+				$usertype3 = empty($row['usertype3'])?"":$row['usertype3'];
+				$usertype4 = empty($row['usertype4'])?"":$row['usertype4'];
 				
 				$usertype_arr =  array($usertype1, $usertype2, $usertype3, $usertype4) ;
 				
 				$arr_filter = array_filter($usertype_arr);
 				$comma_arr = implode(", ", $arr_filter);
 				echo $comma_arr;
+
 				?>
 				
 				</td> 
@@ -100,37 +85,36 @@
 			<tr>
 				<th>제목(필수)</th>
 				<td id="newWriteTable_td">
-					<?=$filter['title']; ?>
+					<?=$row['title']; ?>
 				</td>
 			</tr>
 			<tr>
 				<th>내용(필수)</th>
 				<td id="newWriteTable_td" >
-					<p class="textArea_tag_value"><?=nl2br($filter['content']); ?></p>
+					<p class="textArea_tag_value"><?=$row['content']; ?></p>
 				</td>
 			</tr>
 			<tr>
 				<th>첨부파일</th>
 				<td id="newWriteTable_td">
-					<?=empty($filter['realfilename'])==TRUE?'첨부파일 없음':$filter['realfilename']?> 
-					<?php if(empty($filter['realfilename'])==FALSE){ ?>
-					<button onclick="location.href='actionPHP/file_down.php?no=<?=$filter['bid'];?>'">다운로드</button>
-					<?php }?>
+					<?=$row['realfilename']; ?> <input type="file" value="다운로드"> 
 				</td>
 			</tr>
 		</table>
-
+		
 			<div id="newWrite_button_div">
-				<input id="btn_size" type="button" value="수정" onclick="location.replace('modify.php?no=<?=$filter['bid']?>');">
+				<input id="btn_size" type="button" value="수정" onclick="location.replace('modify.php?no=<?=$row['bid']?>');">
 				<input id="btn_size" type="button" value="삭제" onclick="return del();">
-				<input id="btn_size" type="button" value="목록" onclick="location.replace('list.php?page=<?=$page?>')">
+				<input id="btn_size" type="button" value="목록" onclick="location.replace('./list.php')">
 			</div>
+	
 	</div>
+
 </body>
 </html>
 
 <?php 
-$sql = "update board set hit=".mysqli_real_escape_string($conn, $filter['hit'])."+1 where bid=".mysqli_real_escape_string($conn, $filter['bid']);
+    $sql = "update board set hit=".mysqli_real_escape_string($conn, $row['hit'])."+1 where bid=".mysqli_real_escape_string($conn, $row['bid']);
     $result = mysqli_query($conn, $sql);
 ?>
 

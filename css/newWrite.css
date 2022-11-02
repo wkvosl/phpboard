@@ -20,12 +20,12 @@ input, select{
 }
 
 #newWriteTable_input_title{
-	width: 62.7vw;
+	width: 72.6vw;
 }
 
 textarea{
 	margin: 10px 0 10px 10px;
-    width: 63vw;
+    width: 73vw;
     height: 300px;
     resize: none;
  }
@@ -41,12 +41,4 @@ td , th{
 
 .textArea_tag_value{
 	 height: 300px;
-}
-
-#detail_th, #newWrite_th{
-	width: 200px;
-}
-
-#modify_th{
-	min-width: 200px;
 }
