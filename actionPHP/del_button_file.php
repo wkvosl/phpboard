@@ -1,5 +1,5 @@
 <?php
-include '../DB.php';
+require_once '../DB.php';
 
 $id = mysqli_real_escape_string($conn, $_GET['no']);
 
@@ -14,6 +14,7 @@ unlink($upload_file);
 $sql = 'update board set realfilename = NULL where bid='.mysqli_real_escape_string($conn, $id);
 $result = mysqli_query($conn, $sql);
 header("Location:../modify.php?no=".$id);
+
 mysqli_close($conn);
 
 ?>

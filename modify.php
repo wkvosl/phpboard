@@ -1,7 +1,7 @@
 
 
 <?php 
-    include 'DB.php';
+    require_once 'DB.php';
     
     $id = mysqli_real_escape_string($conn,$_GET['no']);
     $sql = "select * from board where bid=".$id;

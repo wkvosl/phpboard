@@ -1,5 +1,5 @@
 <?php
-    include 'DB.php';
+    require_once 'DB.php';
     $page = empty($_GET['page'])? $page = 1:$_GET['page'];
 ?>
 

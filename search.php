@@ -1,5 +1,5 @@
 <?php
-    include 'DB.php';
+    require_once 'DB.php';
     
     $s_title = empty($_GET['t'])==TRUE?'':trim($_GET['t']);        //SearchForTitle
     $s_username = empty($_GET['u'])==TRUE?'':trim($_GET['u']);  //SearchForUsername

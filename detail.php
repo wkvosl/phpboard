@@ -1,8 +1,7 @@
 
 
 <?php
-
-    include 'DB.php';
+    require_once 'DB.php';
     $page = empty($_GET['page'])? $page = 1:$_GET['page'];
     
     
@@ -105,7 +104,7 @@
 			<tr>
 				<th>내용(필수)</th>
 				<td id="newWriteTable_td" >
-					<p class="textArea_tag_value"><?=$filter['content']; ?></p>
+					<p class="textArea_tag_value"><?=nl2br($filter['content']); ?></p>
 				</td>
 			</tr>
 			<tr>

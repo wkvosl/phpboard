@@ -1,6 +1,6 @@
 <?php
 
-include '../DB.php';
+require_once '../DB.php';
 include '../file.php';
 
 //DB 칼럼을 나눔... 
