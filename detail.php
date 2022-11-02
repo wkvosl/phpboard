@@ -21,6 +21,10 @@
              'realfilename'=> htmlspecialchars($row['realfilename']),
              'writedate'=> htmlspecialchars($row['writedate']),
              'username'=> htmlspecialchars($row['username']),
+             'usertype1'=> htmlspecialchars($row['usertype1']),
+             'usertype2'=> htmlspecialchars($row['usertype2']),
+             'usertype3'=> htmlspecialchars($row['usertype3']),
+             'usertype4'=> htmlspecialchars($row['usertype4']),
              'hit'=> htmlspecialchars($row['hit'])
          );
      }
@@ -79,7 +83,6 @@
 				<th>고객유형</th>
 				<td id="newWriteTable_td">
 				<?php 
-				
 				$usertype1 = empty($filter['usertype1'])?"":$filter['usertype1'];
 				$usertype2 = empty($filter['usertype2'])?"":$filter['usertype2'];
 				$usertype3 = empty($filter['usertype3'])?"":$filter['usertype3'];
@@ -90,7 +93,6 @@
 				$arr_filter = array_filter($usertype_arr);
 				$comma_arr = implode(", ", $arr_filter);
 				echo $comma_arr;
-
 				?>
 				
 				</td> 

@@ -24,7 +24,7 @@
     }
     
     
-        $upload_dir = $_SERVER['DOCUMENT_ROOT'].'/s/uploadFile/';
+        $upload_dir = $_SERVER['DOCUMENT_ROOT'].'/s_v2/uploadFile/';
         $upload_file = $upload_dir.basename($name);
         $randnum = rand(00000,99999);
         if($name==''){

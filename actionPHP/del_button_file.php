@@ -8,7 +8,7 @@ $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_array($result);
 $name = $row['realfilename'];
 
-$upload_file = $_SERVER['DOCUMENT_ROOT'].'/s/uploadFile/'.$name;
+$upload_file = $_SERVER['DOCUMENT_ROOT'].'/s_v2/uploadFile/'.$name;
 unlink($upload_file);
 
 $sql = 'update board set realfilename = NULL where bid='.mysqli_real_escape_string($conn, $id);

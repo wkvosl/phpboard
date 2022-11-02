@@ -22,8 +22,8 @@
 	<div id="all_body_div">
 	<div id="SearchDiv">
 		<form action="search.php" method="get" id="SearchDiv_inForm" name="searchGetForm">&nbsp;
-    		 제목 <input name="t">&nbsp;
-    		 작성자 <input name="u">&nbsp;
+    		 제목 <input type="search" name="t">&nbsp;
+    		 작성자 <input type="search" name="u">&nbsp;
     		 작성일 <input type="date" name="fd"> ~
     		 <input type="date" name="ld">&nbsp;
     		 <input type="submit" value="검색" onclick="return search()">&nbsp;
