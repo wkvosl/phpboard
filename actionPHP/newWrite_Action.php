@@ -1,15 +1,14 @@
 <?php
 
-include '../DB.php';
+require_once '../DB.php';
+include '../file.php';
 
 //DB 칼럼을 나눔... 
-// $usertype_arr =  $_POST[ "usertype" ] ;
+// $usertype_arr =  $_POST[ "usertype[]" ] ;
 // $implode_usertype = implode( ", ", $usertype_arr );
-
 // echo $usertype_arr;
 // echo $implode_usertype;
 // file_put_contents('data/'.$_POST['title']);
-
 
  $filter_newWrite = array(
      'username' => mysqli_real_escape_string($conn, $_POST['username']),
@@ -21,7 +20,7 @@ include '../DB.php';
      'usertype3' => mysqli_real_escape_string($conn, $_POST['usertype3']),
      'usertype4' => mysqli_real_escape_string($conn, $_POST['usertype4']),
      'content' => mysqli_real_escape_string($conn, $_POST['content']),
-     'realfilename' => mysqli_real_escape_string($conn, $_POST['realfilename'])
+     'realfilename' => $nameplus
  );
 
  $sql="insert into board (username, title, boardtype, boardcategory, usertype1,usertype2,usertype3,usertype4, content, writedate, realfilename)
@@ -37,11 +36,10 @@ include '../DB.php';
      echo  '저장 중 에러발생, 저장되지 않았습니다.';
      error_log(mysqli_error($conn));
  }else{
-     //header("Location: ../list.php");
+     header("Location: ../list.php");
  }
 
 ?>
-
 
 <?php 
     mysqli_close($conn);

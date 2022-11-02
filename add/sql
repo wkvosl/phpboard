@@ -19,3 +19,5 @@ insert into test.board (username, title, boardtype, boardcategory, content, writ
 values ('홍길동','테스트2','유지보수','호스팅','살려주세요', sysdate());
 
 select * from test.board;
+
+alter table test.board modify column writedate datetime;
