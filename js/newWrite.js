@@ -29,18 +29,21 @@ function checkinput(){
 }
 
 
-function setPreview(event){
-	var reader = new FileReader();
-	var imgpreview = document.querySelector("div#imgPreview");
-	
-	reader.onload = function(event){
-		var img = document.createElement("img");
-			img.setAttribute('src',event.target.result);
-			img.setAttribute('class','imgV');
-			imgpreview.appendChild(img);
-	};
-	reader.readAsDataURL(event.target.files[0]);
-}
+//function setPreview(event){
+//	var reader = new FileReader();
+//	var imgpreview = document.querySelector("div#imgPreview");
+//	
+//	reader.onload = function(event){
+//		var img = document.createElement("img");
+//			img.setAttribute('src',event.target.result);
+//			img.setAttribute('class','imgV');
+//			imgpreview.appendChild(img);
+//	};
+//	reader.readAsDataURL(event.target.files[0]);
+//	
+//	var imgV = document.getElementsByClassName("imgV");
+//
+//}
 
 
 

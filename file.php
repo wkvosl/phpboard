@@ -1,5 +1,8 @@
 <!-- echo sys_get_temp_dir(); -->
 <?php
+
+    $id = mysqli_real_escape_string($conn,$_POST['no']);
+
     if(isset($_FILES)){
          $error = $_FILES['realfilename']['error'];
          $name = $_FILES['realfilename']['name'];
@@ -11,7 +14,8 @@
     
     if(!empty($name)){
         
-        $allowed_ext=array('jpg','jpeg','jpe','png','bmp', 'gif');
+//      코드 미포함 powerpoint 확장자
+        $allowed_ext=array('jpg','jpeg','jpe','png','bmp','gif','csv','xls','xlsx','pptx','ppt','pdf');
         $ext = explode(".", $name);
         $ext = array_pop($ext);
         
@@ -26,12 +30,12 @@
     
         $upload_dir = $_SERVER['DOCUMENT_ROOT'].'/s_v2/uploadFile/';
         $upload_file = $upload_dir.basename($name);
-        $randnum = rand(00000,99999);
+        $randnum = rand(0000,9999);
         if($name==''){
             $nameplus = null;
         }
         else{
-        $nameplus = $randnum.''.date('YmdH')."_".$name;
+        $nameplus = $randnum.''.date('ymdH')."_".$name;
         }
         
 

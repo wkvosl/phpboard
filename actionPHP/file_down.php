@@ -9,6 +9,7 @@ $row = mysqli_fetch_array($result);
 $filename = basename($row['realfilename']);
 //$filename = urldecode($filename);
 
+
 // $filePath = $_SERVER['DOCUMENT_ROOT']."/uploadFile/".$filename;
 $filePath = '../uploadFile/'.$filename;
 
@@ -22,7 +23,8 @@ if(is_file($filePath)){  //파일명
 }
 
     ob_clean();
-    $name = urlencode($filename);
+    $name = substr($filename, 13);
+    $name = urlencode($name);
     
 if(file_exists($filePath)){
     header("Content-Type:application/octet-stream");

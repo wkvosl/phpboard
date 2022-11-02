@@ -72,15 +72,14 @@
 			<tr>
 				<th>내용(필수)</th>
 				<td id="newWriteTable_td">
-					<textarea name="content" rows="10" cols="" required></textarea>
+					<textarea name="content" rows="10" cols="" spellcheck="true" required></textarea>
 				</td>
 			</tr>
 			<tr>
 				<th>첨부파일</th>
 				<td id="newWriteTable_td">
 <!-- 					<input type="hidden" name="MAX_FILE_SIZE" value="300000"> 기본 20MB-->
-					<input type="file" name="realfilename" accept="image/*" onchange="setPreview(event);">
-						<div id="imgPreview"></div>
+					<input type="file" name="realfilename" title="💡 이미지파일, gif, csv, xls, xlsx, pptx, ppt, pdf">
 				</td>
 			</tr>
 		</table>
