@@ -14,9 +14,9 @@
 	<h1>등록</h1>
 	<hr>
 	
-	<div id="all_body_div">
-		<form action="actionPHP/newWrite_Action.php" method="post" name="newWrite_form" enctype="multipart/form-data">
-<!-- 		<form action="test.php" method="post" enctype="multipart/form-data" name="newWrite_form"> -->
+	<div id="all_body_div">  <!-- test.php -->
+<!-- 		<form action="test.php" method="post" name="newWrite_form" enctype="multipart/form-data"> -->
+		<form action="actionPHP/newWrite_Action.php" method="post" enctype="multipart/form-data" name="newWrite_form">
 		<table id="newWriteTable">
 			<tr>
 				<th id="newWrite_th">구분(필수)</th>
@@ -78,7 +78,7 @@
 			<tr>
 				<th>첨부파일</th>
 				<td id="newWriteTable_td">
-<!-- 					<input type="hidden" name="MAX_FILE_SIZE" value="300000"> 기본 20MB-->
+					<input type="hidden" name ="filesize" value="2097152">
 					<input type="file" name="realfilename" title="💡 이미지파일, gif, csv, xls, xlsx, pptx, ppt, pdf">
 				</td>
 			</tr>

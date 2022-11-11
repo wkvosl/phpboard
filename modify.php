@@ -121,8 +121,9 @@
 			<tr>
 				<th>첨부파일</th>
 				<td id="newWriteTable_td">
+					<input type="hidden" name ="filesize" value="2097152">
 					<input type="file" name="realfilename" onclick="locaion.href='rweenfile.php?no='<?=$filter["bid"]?>"> 
-					<?=$filter['realfilename']?> 
+					<?=substr($filter['realfilename'],13);?> 
 					<!--<?=empty($filter['realfilename'])==FALSE?"<button type='button' onclick='location.href=\"actionPHP/del_button_file.php?no=".$filter["bid"]."\"'>삭제</button>":""?>-->
 					<?=empty($filter['realfilename'])==FALSE?"<button type='button' onclick='return del_file();'>삭제</button>":""?>
 				</td>

@@ -24,9 +24,9 @@ function checkinput(){
 		return false;
 	}
 	
-	alert('저장 하였습니다.');
 	return true;
 }
+//	alert('저장 하였습니다.');
 
 
 //function setPreview(event){

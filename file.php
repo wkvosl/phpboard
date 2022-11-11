@@ -1,19 +1,21 @@
 <!-- echo sys_get_temp_dir(); -->
 <?php
 
-    $id = mysqli_real_escape_string($conn,$_POST['no']);
 
     if(isset($_FILES)){
          $error = $_FILES['realfilename']['error'];
          $name = $_FILES['realfilename']['name'];
-         $type = $_FILES['realfilename']['type'];
-         $size = $_FILES['realfilename']['size'];
          $temp_name = $_FILES['realfilename']['tmp_name'];
+         $size = $_FILES['realfilename']['size'];
     }
+    
+    $filesize = $_POST['filesize'];
+    
+    $filesizeM = floor($filesize / 1024 / 1024)."MB" ;
+    $sizeM = floor($size / 1024 / 1024 )."MB" ;
     
     
     if(!empty($name)){
-        
 //      코드 미포함 powerpoint 확장자
         $allowed_ext=array('jpg','jpeg','jpe','png','bmp','gif','csv','xls','xlsx','pptx','ppt','pdf');
         $ext = explode(".", $name);
@@ -25,38 +27,26 @@
 //             header('location:'.$_SERVER['HTTP_REFERER']);
             exit;
         }
+        
+        if($size > $filesize){
+            echo "<script>alert('용량 초과 입니다. 제한용량 $filesizeM, 넘어온 용량 $sizeM');</script>";
+            echo "<script>history.go(-1);</script>";
+            exit;
+        }
     }
-    
-    
+        
         $upload_dir = $_SERVER['DOCUMENT_ROOT'].'/s_v2/uploadFile/';
         $upload_file = $upload_dir.basename($name);
-        $randnum = rand(0000,9999);
+        $randnum = rand(1111,9999);
         if($name==''){
             $nameplus = null;
         }
         else{
         $nameplus = $randnum.''.date('ymdH')."_".$name;
         }
-        
 
-    
-    if($error != UPLOAD_ERR_OK){
-        switch ($error){
-            case UPLOAD_ERR_INI_SIZE : echo 'ini_size에러'; break;
-            case UPLOAD_ERR_FORM_SIZE : echo '파일이 너무 큽니다'; break;
-        }
-    }
 
-    $upload_file = $upload_dir.basename($nameplus);
+    $upload_file = $upload_dir.$nameplus;
     move_uploaded_file($temp_name, $upload_file);
 
-    //     echo "<h2> 파일명정보 </h2>
-    //            <ul>
-    //             <li>파일명: $name </li>
-    //             <li>확장자: $ext</li>
-    //             <li>파일형식: $type </li>
-    //             <li>파일크기: $size </li>
-    //             </ul>
-    //           ";
-    
 ?>
