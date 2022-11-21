@@ -79,7 +79,8 @@
 				<th>첨부파일</th>
 				<td id="newWriteTable_td">
 					<input type="hidden" name ="filesize" value="2097152">
-					<input type="file" name="realfilename" title="💡 이미지파일, gif, csv, xls, xlsx, pptx, ppt, pdf">
+					<input type="file" name="realfilename" title="💡 이미지파일, gif, csv, xls, xlsx, pptx, ppt, pdf &#10; 파일 업로드 최대용량은 2MB 입니다.">
+					<!-- &#10; 으로 타이틀 속성에 줄바꿈 -->
 				</td>
 			</tr>
 		</table>

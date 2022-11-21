@@ -18,6 +18,9 @@
 input, select{
 	margin: 10px 0 10px 10px;
 }
+.select{
+	height: 21px;
+}
 
 #newWriteTable_input_title{
 	width: 62.7vw;
