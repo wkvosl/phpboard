@@ -38,7 +38,7 @@
 <link rel="stylesheet" type="text/css" href="css/newWrite.css">
     <script>
     function del_file(){
-    	if (confirm("첨부파일을 삭제 하시겠습니까??") == true){    
+    	if (confirm("삭제한 파일은 복원이 안됩니다. 첨부파일을 삭제 하시겠습니까??") == true){    
     		location.replace('actionPHP/del_button_file.php?no=<?=$filter['bid']?>');
     		  return true;
     	}else{  
@@ -62,7 +62,7 @@
 			<tr>
 				<th id="modify_th">구분(필수)</th>
 				<td id="newWriteTable_td">
-					<select name="boardtype" required>
+					<select name="boardtype" class="select" required>
 						<option value="유지보수" <?=$filter['boardtype']=="유지보수"?"checked":""?>>유지보수</option>
 						<option value="문의사항" <?=$filter['boardtype']=="문의사항"?"checked":""?>>문의사항</option>
 					</select>
@@ -71,7 +71,7 @@
 			<tr>
 				<th>작성자(필수)</th>
 				<td id="newWriteTable_td">
-					<input name="username" value="<?=$filter['username']?>" readonly title="작성자칸은 수정 할 수 없습니다.">
+					<input name="username" value="<?=$filter['username']?>" disabled title="작성자 란은 수정 할 수 없습니다.">
 				</td>
 			</tr>
 			<tr>
@@ -121,8 +121,9 @@
 			<tr>
 				<th>첨부파일</th>
 				<td id="newWriteTable_td">
-					<input type="file" name="realfilename" onclick="locaion.href='rweenfile.php?no='<?=$filter["bid"]?>"> 
-					<?=$filter['realfilename']?> 
+					<input type="hidden" name ="filesize" value="2097152">  <!-- 2MB -->
+					<input type="file" name="realfilename" onclick="locaion.href='rweenfile.php?no='<?=$filter["bid"]?>" title="💡 이미지파일, gif, csv, xls, xlsx, pptx, ppt, pdf &#10; 파일 업로드 최대용량은 2MB 입니다." >
+					<?=substr($filter['realfilename'],13);?> 
 					<!--<?=empty($filter['realfilename'])==FALSE?"<button type='button' onclick='location.href=\"actionPHP/del_button_file.php?no=".$filter["bid"]."\"'>삭제</button>":""?>-->
 					<?=empty($filter['realfilename'])==FALSE?"<button type='button' onclick='return del_file();'>삭제</button>":""?>
 				</td>

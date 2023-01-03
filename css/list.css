@@ -38,11 +38,11 @@
 
 #listTable{
 	border: 1px solid;
-	width: 100%;
-	margin: auto;
-	text-align: center;
-	border-collapse: collapse;
-	table-layout: fixed;
+    margin: auto;
+    min-width: 800px;
+    text-align: center;
+    border-collapse: collapse;
+    table-layout: fixed;
 }
 
 #listTable > tr, th, td{

@@ -66,13 +66,6 @@
 		</tr>
 		<?php 
 		
-		if(isset($_GET['page'])==false){
-		    $sql="select @rownum:=@rownum+1 as rownum, b.* from
-	           ( select board.* from test.board board, (select @rownum:=0) r order by writedate desc) b 
-                order by rownum
-                limit ".$firstRownum.",".$paging;
-		}
-		
 		$sql ="select @rownum:=@rownum+1 as rownum, b.* from
 	           ( select board.* from test.board board, (select @rownum:=0) r order by writedate desc) b 
                 order by rownum

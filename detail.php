@@ -112,7 +112,10 @@
 			<tr>
 				<th>첨부파일</th>
 				<td id="newWriteTable_td">
-					<?=empty($filter['realfilename'])==TRUE?'첨부파일 없음':$filter['realfilename']?> 
+<!-- 				파일명 : substr로 난수와 날짜붙인것을 떼어내어 보여줌. -->
+					<a href='actionPHP/file_down.php?no=<?=$filter['bid'];?>'>
+					<?=empty($filter['realfilename'])==TRUE?'':substr($filter['realfilename'],13)?>
+					</a> 
 					<?php if(empty($filter['realfilename'])==FALSE){ ?>
 					<button onclick="location.href='actionPHP/file_down.php?no=<?=$filter['bid'];?>'">다운로드</button>
 					<?php }?>

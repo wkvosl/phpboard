@@ -14,9 +14,9 @@
 	<h1>등록</h1>
 	<hr>
 	
-	<div id="all_body_div">
-		<form action="actionPHP/newWrite_Action.php" method="post" name="newWrite_form" enctype="multipart/form-data">
-<!-- 		<form action="test.php" method="post" enctype="multipart/form-data" name="newWrite_form"> -->
+	<div id="all_body_div">  <!-- test.php -->
+<!-- 		<form action="test.php" method="post" name="newWrite_form" enctype="multipart/form-data"> -->
+		<form action="actionPHP/newWrite_Action.php" method="post" enctype="multipart/form-data" name="newWrite_form">
 		<table id="newWriteTable">
 			<tr>
 				<th id="newWrite_th">구분(필수)</th>
@@ -72,15 +72,15 @@
 			<tr>
 				<th>내용(필수)</th>
 				<td id="newWriteTable_td">
-					<textarea name="content" rows="10" cols="" required></textarea>
+					<textarea name="content" rows="10" cols="" spellcheck="true" required></textarea>
 				</td>
 			</tr>
 			<tr>
 				<th>첨부파일</th>
 				<td id="newWriteTable_td">
-<!-- 					<input type="hidden" name="MAX_FILE_SIZE" value="300000"> 기본 20MB-->
-					<input type="file" name="realfilename" accept="image/*" onchange="setPreview(event);">
-						<div id="imgPreview"></div>
+					<input type="hidden" name ="filesize" value="2097152">
+					<input type="file" name="realfilename" title="💡 이미지파일, gif, csv, xls, xlsx, pptx, ppt, pdf &#10; 파일 업로드 최대용량은 2MB 입니다.">
+					<!-- &#10; 으로 타이틀 속성에 줄바꿈 -->
 				</td>
 			</tr>
 		</table>

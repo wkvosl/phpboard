@@ -1,14 +1,8 @@
 <?php
 
 require_once '../DB.php';
-include '../file.php';
+require_once '../file.php';
 
-//DB 칼럼을 나눔... 
-// $usertype_arr =  $_POST[ "usertype[]" ] ;
-// $implode_usertype = implode( ", ", $usertype_arr );
-// echo $usertype_arr;
-// echo $implode_usertype;
-// file_put_contents('data/'.$_POST['title']);
 
  $filter_newWrite = array(
      'username' => mysqli_real_escape_string($conn, $_POST['username']),
@@ -33,8 +27,7 @@ include '../file.php';
  $result = mysqli_query($conn, $sql);
 
  if($result==false){
-     echo  '저장 중 에러발생, 저장되지 않았습니다.';
-     error_log(mysqli_error($conn));
+     echo  "저장 중 에러발생, 저장되지 않았습니다.";
  }else{
      header("Location: ../list.php");
  }

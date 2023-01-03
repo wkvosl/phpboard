@@ -46,8 +46,8 @@ include '../file.php';
  $result = mysqli_query($conn, $sql);
 
  if($result==false){
-     echo  '저장 중 에러발생, 저장되지 않았습니다.';
-     error_log(mysqli_error($conn));
+     echo  "<script>alret('저장 중 에러발생, 저장되지 않았습니다.');</script>";
+     
  }else{
       echo header("Location: ../detail.php?no=".$filter_modify['bid']);
  }
